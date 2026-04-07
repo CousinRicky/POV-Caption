@@ -1,22 +1,22 @@
-/* caption.pov version 1.1.1A
+/* caption.pov version 1.1.2-rc.1 2026-Apr-06
  * Persistence of Vision Raytracer scene description file
  * POV-Ray Object Collection demo
  *
  * A demonstration of caption.inc.
  *
- * Copyright (C) 2013 - 2021 Richard Callwood III.  Some rights reserved.
- * This file is licensed under the terms of the CC-LGPL
- * a.k.a. the GNU Lesser General Public License version 2.1.
+ * Copyright (C) 2013 - 2026 Richard Callwood III.  Some rights reserved.
+ * This file is licensed under the terms of the GNU-LGPL.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation.
+ * This library is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  Please
- * visit https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html for
- * the text of the GNU Lesser General Public License version 2.1.
+ * visit https://www.gnu.org/licenses/lgpl-3.0.html for the text
+ * of the GNU Lesser General Public License version 3.
  *
  * Vers   Date         Comments
  * ----   ----         --------
@@ -31,7 +31,10 @@
  *        2019-Mar-27  The sky and lighting are changed.
  * 1.1.1  2019-Mar-30  The prefix on the Sun's location identifier is changed
  *                     from "v_" (vector) to "lv_" (location vector).
- * 1.1.1A 2021-Oct-09  The license text is updated.
+ *        2024-Dec-28  The #version is preserved between 3.5 and 3.8.
+ *        2026-Apr-06  The prefix on the Sun's location identifier is changed to
+ *                     "pv_" (point vector).
+ * 1.1.2  2026-Apr-06  The license is upgraded to LGPL 3.
  */
 // +A +AM1 +J +R5
 //v3.8 setting:
@@ -40,7 +43,7 @@
 // +A +AM3 +R4 +AC0.999999
 // +A +AM3 +R4 +AC1.0
 //(The latter setting is smooth, but very slow.)
-#version 3.5;
+#version max (3.5, min (3.8, version)); // Bracket the POV version.
 
 #include "screen.inc"
 #include "transforms.inc"
@@ -61,9 +64,9 @@ global_settings
 
 Set_Camera (<-0.2, 1.5, -7.2>, <0, 1, 0>, 30)
 
-#declare lv_Sun = vrotate (-z, <45, 45, 0>) * 1000000;
+#declare pv_Sun = vrotate (-z, <45, 45, 0>) * 1000000;
 light_source
-{ lv_Sun, rgb <1.557, 1.483, 1.434>
+{ pv_Sun, rgb <1.557, 1.483, 1.434>
   parallel point_at 0
 }
 
@@ -82,7 +85,7 @@ sky_sphere
     { [0 rgbt <0.305, 0.446, 0.726, 1>]
       [1 rgb <0.305, 0.446, 0.726>]
     }
-    Reorient_Trans (z, lv_Sun)
+    Reorient_Trans (z, pv_Sun)
   }
 }
 

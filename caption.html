@@ -2,22 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Caption 1.1.1A User Manual | POV-Ray Object Collection</title>
+<title>Caption 1.1.2-rc.1 User Manual | POV-Ray Object Collection</title>
 <link rel="stylesheet" type="text/css" href="caption.css">
 </head>
 
 <body>
 
-<h1>Caption 1.1.1A User&nbsp;Manual</h1>
+<h1>Caption 1.1.2-rc.1 User&nbsp;Manual</h1>
 
 <h2>Abstract</h2>
 
 <p>
-<a href="caption.jpg"><img class="demo" src="caption_thumbnail.jpg" title="Larger demo image" alt="[Thumbnail which links to a demo image]"></a>
+<a href="caption.jpg" class="demo"><img src="caption_thumbnail.jpg" title="Larger demo image" alt="[Thumbnail which links to a demo image]"></a>
 Caption is a library module from the
 <a href="https://www.povray.org/">Persistence of Vision Raytracer (POV-Ray)</a>
-<a href="http://lib.povray.org/">Object Collection</a>
-that creates boxes with imprinted text. With an opaque or partially transparent box, this is useful for quickly annotating busy scenes where text might otherwise be difficult to read.
+<a href="https://lib.povray.org/">Object Collection</a>
+that creates boxes with imprinted text.
+With an opaque or partially transparent box,
+this is useful for quickly annotating busy scenes where text might otherwise be difficult to read.
 
 <hr>
 
@@ -84,9 +86,6 @@ that creates boxes with imprinted text. With an opaque or partially transparent 
   <th>File</th>
   <th>Description</th>
  </tr><tr>
-  <td><code>README</code><var>nnnnnn</var><code>.html</code></td>
-  <td>Important information about using the POV-Ray Object Collection</td>
- </tr><tr>
   <td><code>caption_description.txt</code></td>
   <td>A brief description of Caption</td>
  </tr><tr>
@@ -97,15 +96,13 @@ that creates boxes with imprinted text. With an opaque or partially transparent 
   <td>Prerequisites (empty file)</td>
  </tr><tr>
   <td><code>caption.css</code></td>
-  <td rowspan="3">Other administrative files</td>
- </tr><tr>
-  <td><code>cc-LGPL-a.png</code></td>
- </tr><tr>
-  <td><code>Version</code><var>nnnnnn</var><code>.js</code></td>
+  <td>Formatting for this user manual</td>
  </tr>
 </table>
 
-<p>The italicized <var>nnnnnn</var> in some of the file names represents the 6-digit number that is in the name of the <code>.zip</code> file as downloaded from <a href="http://lib.povray.org/">lib.povray.org</a>. If you downloaded this module from some other repository, the files <code>cc-LGPL-a.png</code>, <code>README</code><var>nnnnnn</var><code>.html</code>, and <code>Version</code><var>nnnnnn</var><code>.js</code> may not be present. Please see the <a href="https://web.archive.org/web/20120419111948/http://lib.povray.org/usersguide/02using.html">Object Collection User’s Guide</a> if <code>README</code><var>nnnnnn</var><code>.html</code> is not present.
+<p>Depending on where you obtained this library, there may be other administrative files included with this download,
+including one named <code>README<var>{series-of-digits}</var>.html</code> which contains important information about using the POV-Ray Object Collection.
+Please see the <a href="https://web.archive.org/web/20120419111948/http://lib.povray.org/usersguide/02using.html">Object Collection User’s Guide</a> if this file is not present.
 
 <p><a href="#toc">Table of contents</a><hr>
 
@@ -115,11 +112,18 @@ that creates boxes with imprinted text. With an opaque or partially transparent 
 
 <h3 id="Compliance">Namespace Compliance</h3>
 
-<p>All file names in this module and all global and local identifiers defined in <code>caption.inc</code> comply fully with the <a href="https://news.povray.org/470b46cb%241%40news.povray.org">Object Collection naming standards</a>, as <a href="https://news.povray.org/48ba92e8%241%40news.povray.org">revised August 2008</a> and <a href="https://news.povray.org/povray.object-collection/thread/%3Cweb.5018a69dae7e89cb85de7b680%40news.povray.org%3E/">proposed August 2012</a>. The files in this module may be safely stored in the same folder as other fully compliant Object Collection modules.
+<p>All file names in this library and all global and local identifiers defined in <code>caption.inc</code> comply fully with the
+<a href="https://news.povray.org/470b46cb%241%40news.povray.org">Object Collection naming standards</a>, as
+<a href="https://news.povray.org/48ba92e8%241%40news.povray.org">revised August 2008</a> and
+<a href="https://news.povray.org/povray.object-collection/thread/%3Cweb.5018a69dae7e89cb85de7b680%40news.povray.org%3E/">proposed August 2012</a>.
+The files in this library may be safely stored in the same folder as other fully compliant Object Collection contributions.
 
-<p>The reserved prefix for this module is “<code>caption</code>,” including any uppercase and lowercase variants. To avoid conflicts, do not introduce into your scene description file any identifiers with this prefix as its name, or any identifiers that start with this prefix plus an underscore.
+<p>The reserved prefix for this library is “<code>caption</code>,” including any uppercase and lowercase variants.
+To avoid conflicts, do not introduce into your scene description file any identifiers with this prefix as its name,
+or any identifiers that start with this prefix plus an underscore.
 
-<p>The standard include file <code>math.inc</code> is used by <code>caption.inc</code>. The identifier <code>View_POV_Include_Stack</code> from the standard include file <code>debug.inc</code> is referenced by <code>caption.inc</code>, although <code>debug.inc</code> itself is not used.
+<p>The standard include file <code>math.inc</code> is used by <code>caption.inc</code>.
+The identifier <code>View_POV_Include_Stack</code> from the standard include file <code>debug.inc</code> is referenced by <code>caption.inc</code>, although <code>debug.inc</code> itself is not used.
 
 <h3 id="Usage">Usage</h3>
 
@@ -135,17 +139,20 @@ that creates boxes with imprinted text. With an opaque or partially transparent 
 
 <h3 id="Emission">The c_Emission Argument</h3>
 
-<p>This argument controls the “glow” of a caption object, that is, the portion of the object’s colors that is independent of the environmental lighting. The effect is slightly different depending on the version of POV-Ray.
+<p>This argument controls the “glow” of a caption object, that is, the portion of the object’s colors that is independent of the environmental lighting.
+The effect is slightly different depending on the version of POV-Ray.
 
 <ul>
- <li><strong>POV-Ray 3.7</strong>
+ <li><strong>POV-Ray 3.7 or 3.8</strong>
   <ul>
-   <li>If all three color components of the <code>c_Emission</code> argument are negative (or if the argument is a negative float), then the ambient and diffuse finishes are turned off for the object, and the emission finish is set to 1.0.
+   <li>If all three color components of the <code>c_Emission</code> argument are negative (or if the argument is a negative float),
+    then the ambient and diffuse finishes are turned off for the object, and the emission finish is set to 1.0.
    <li>Otherwise, the emission finish on the object is set to the value of the <code>c_Emission</code> argument, and the ambient and diffuse finishes default.
   </ul>
  <li><strong>POV-Ray 3.5 or 3.6</strong>
   <ul>
-   <li>If all three color components of the <code>c_Emission</code> argument are negative (or if the argument is a negative float), then the diffuse finish is turned off for the object, and the ambient finish is set to 1.0.
+   <li>If all three color components of the <code>c_Emission</code> argument are negative (or if the argument is a negative float),
+    then the diffuse finish is turned off for the object, and the ambient finish is set to 1.0.
    <li>Otherwise, the ambient finish on the object is set to the value of the <code>c_Emission</code> argument, and the diffuse finish defaults.
   </ul>
 </ul>
@@ -156,13 +163,18 @@ that creates boxes with imprinted text. With an opaque or partially transparent 
 
 <p>
 <img class="demo" src="caption_prism.png" alt="[Example of a prismatic object on the left, and a non-prismatic object on the right]">
-Several of the macros take an object as an argument to use as a pattern. The object is projected along the <var>z</var> direction such that it is centered on the <var>x</var>-<var>y</var> plane, the object’s “center” being measured from its bounding box. The easiest way to get predictable results is for the object to be prismatic in form; that is, its cross section in <var>x</var>-<var>y</var> should not vary for any value of <var>z.</var>
+Several of the macros take an object as an argument to use as a pattern.
+The object is projected along the <var>z</var> direction such that it is centered on the <var>x</var>-<var>y</var> plane,
+the object’s “center” being measured from its bounding box.
+The easiest way to get predictable results is for the object to be prismatic in form;
+that is, its cross section in <var>x</var>-<var>y</var> should not vary for any value of <var>z.</var>
 
 <p><a href="#toc">Table of contents</a><hr>
 
 <h3 id="Caption" class="anew">Caption (s_Text, s_Font, v_Padding, c_Text, c_Background, c_Emission)</h3>
 
-<p>Returns a box with text printed on its &minus;<var>z</var> face. The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
+<p>Returns a box with text printed on its &minus;<var>z</var> face.
+The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
 
 <h4>Arguments</h4>
 <table>
@@ -178,7 +190,10 @@ Several of the macros take an object as an argument to use as a pattern. The obj
  </tr><tr>
   <td><code>v_Padding</code></td>
   <td>vector</td>
-  <td>The <var>x</var> and <var>y</var> components are the padding to apply around the text, and <var>z</var> is the depth of the box. If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the text.</td>
+  <td>The <var>x</var> and <var>y</var> components are the padding to apply around the text,
+   and <var>z</var> is the depth of the box.
+   If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the text.
+  </td>
  </tr><tr>
   <td><code>c_Text</code></td>
   <td>color</td>
@@ -198,7 +213,8 @@ Several of the macros take an object as an argument to use as a pattern. The obj
 
 <h3 id="Caption_Object">Caption_Object (Object, v_Padding, c_Object, c_Background, c_Emission)</h3>
 
-<p>Returns a box with a cross section of an object imprinted on its &minus;<var>z</var> face. The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
+<p>Returns a box with a cross section of an object imprinted on its &minus;<var>z</var> face.
+The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
 
 <h4>Arguments</h4>
 <table>
@@ -210,7 +226,11 @@ Several of the macros take an object as an argument to use as a pattern. The obj
  </tr><tr>
   <td><code>v_Padding</code></td>
   <td>vector</td>
-  <td>The <var>x</var> and <var>y</var> components are the padding to apply around the object, and <var>z</var> is the depth of the box. If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the object. The padding is measured around the object’s bounding box.</td>
+  <td>The <var>x</var> and <var>y</var> components are the padding to apply around the object,
+   and <var>z</var> is the depth of the box.
+   If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the object.
+   The padding is measured around the object’s bounding box.
+  </td>
  </tr><tr>
   <td><code>c_Object</code></td>
   <td>color</td>
@@ -230,7 +250,10 @@ Several of the macros take an object as an argument to use as a pattern. The obj
 
 <h3 id="Caption_Object_by_font">Caption_Object_by_font (Object, s_Font, v_Padding, c_Object, c_Background, c_Emission)</h3>
 
-<p>Returns a box with a cross section of an object imprinted on its &minus;<var>z</var> face. To facilitate visual consistency across different calls to this macro, vertical padding will be applied around a font’s metrics, rather than the object itself. The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
+<p>Returns a box with a cross section of an object imprinted on its &minus;<var>z</var> face.
+To facilitate visual consistency across different calls to this macro,
+vertical padding will be applied around a font’s metrics, rather than the object itself.
+The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
 
 <p>Font metrics are measured around the string <a href="#Parameters"><code>Caption_s_Font_exemplar</code></a>.
 
@@ -244,11 +267,16 @@ Several of the macros take an object as an argument to use as a pattern. The obj
  </tr><tr>
   <td><code>s_Font</code></td>
   <td>string</td>
-  <td>A font to be used as a template for the metrics. A null string defaults to Cyrvetica (<code>cyrvetic.ttf</code>).</td>
+  <td>A font to be used as a template for the metrics.
+   A null string defaults to Cyrvetica (<code>cyrvetic.ttf</code>).
+  </td>
  </tr><tr>
   <td><code>v_Padding</code></td>
   <td>vector</td>
-  <td>The <var>x</var> component is the horizontal padding around the object’s bounding box; <var>y</var> is the vertical padding, measured around the pre-determined character string; and <var>z</var> is the depth of the box. If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the object.
+  <td>The <var>x</var> component is the horizontal padding around the object’s bounding box;
+   <var>y</var> is the vertical padding, measured around the pre-determined character string;
+   and <var>z</var> is the depth of the box.
+   If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the object.
   </td>
  </tr><tr>
   <td><code>c_Object</code></td>
@@ -269,7 +297,10 @@ Several of the macros take an object as an argument to use as a pattern. The obj
 
 <h3 id="Caption_Texture">Caption_Texture (Object, c_Object, c_Background, c_Emission)</h3>
 
-<p>Returns an object texture. The object will be translated and scaled in the <var>z</var> direction such that 0.5 POV unit of the object lies on the each side of <var>x</var>-<var>y</var> plane. No transformations will be made in <var>x</var> or <var>y</var>. Note that the transformations are applied only to the texture, and will not affect the object itself.
+<p>Returns an object texture.
+The object will be translated and scaled in the <var>z</var> direction such that 0.5 POV unit of the object lies on the each side of <var>x</var>-<var>y</var> plane.
+No transformations will be made in <var>x</var> or <var>y</var>.
+Note that the transformations are applied only to the texture, and will not affect the object itself.
 
 <h4>Arguments</h4>
 <table>
@@ -299,7 +330,10 @@ Several of the macros take an object as an argument to use as a pattern. The obj
 
 <p>Returns a box with text printed on its &minus;<var>z</var> face.
 <img class="demo" src="caption_uniform.png" alt="[Illustration of the difference between Caption() and Caption_Uniform()]">
-To facilitate visual consistency across different calls to this macro, vertical padding will be applied around the font’s metrics, rather than the text object itself. The illustration shows how <code>Caption_Uniform()</code> can align several captions in a way that <code>Caption()</code> cannot. The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
+To facilitate visual consistency across different calls to this macro,
+vertical padding will be applied around the font’s metrics, rather than the text object itself.
+The illustration shows how <code>Caption_Uniform()</code> can align several captions in a way that <code>Caption()</code> cannot.
+The &minus;<var>z</var> face will lie in the <var>x</var>-<var>y</var> plane.
 
 <p>Font metrics are measured around the string <a href="#Parameters"><code>Caption_s_Font_exemplar</code></a>.
 
@@ -317,8 +351,13 @@ To facilitate visual consistency across different calls to this macro, vertical 
  </tr><tr>
   <td><code>v_Padding</code></td>
   <td>vector</td>
-  <td>The <var>x</var> component is the horizontal padding around the text; <var>y</var> is the vertical padding, measured around the pre-determined character string; and <var>z</var> is the depth of the box. If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the text.
-   <p>Note: The bottom and top extents of the pre-determined character string are not intended to represent the minimum and maximum extents of all character glyphs in the font. Therefore, zero is not recommended as the <var>y</var> or <var>t</var> component, as the bottoms or tops of some characters may be clipped.
+  <td>The <var>x</var> component is the horizontal padding around the text;
+   <var>y</var> is the vertical padding, measured around the pre-determined character string;
+   and <var>z</var> is the depth of the box.
+   If there is a <var>t</var> component, then it will be used instead of <var>y</var> to pad the top of the text.
+   <p>Note: The bottom and top extents of the pre-determined character string are not intended to represent the minimum and maximum extents of all character glyphs in the font.
+   Therefore, zero is not recommended as the <var>y</var> or <var>t</var> component,
+   as the bottoms or tops of some characters may be clipped.
   </td>
  </tr><tr>
   <td><code>c_Text</code></td>
@@ -347,7 +386,9 @@ To facilitate visual consistency across different calls to this macro, vertical 
  </tr><tr>
   <td><code>Caption_s_Font_exemplar</code></td>
   <td>string</td>
-  <td>A string used to determine the text top and text bottom working values. It should not be assumed that all character glyphs will fit entirely between these values.</td>
+  <td>A string used to determine the text top and text bottom working values.
+   It should not be assumed that all character glyphs will fit entirely between these values.
+  </td>
   <td><code>"Xp"</code></td>
  </tr>
 </table>
@@ -359,23 +400,27 @@ To facilitate visual consistency across different calls to this macro, vertical 
  <tr>
   <td><code>CAPTION_VERSION</code></td>
   <td>float</td>
-  <td>The Caption version, in case the scene file needs that information.</td>
-  <td>1.11</td>
+  <td>The Caption version.</td>
+  <td>1.12</td>
  </tr>
 </table>
 
 <h3>Internal Identifiers</h3>
 
-<p>Any identifiers in <code>caption.inc</code> that are not documented in this manual are considered “private” or “protected,” and are subject to change or elimination in a future update.
+<p>Any identifiers in <code>caption.inc</code> that are not documented in this manual are considered “private,”
+and are subject to change or elimination in a future update.
 
 <p><a href="#toc">Table of contents</a><hr>
 
 <h2 id="About">About Caption</h2>
 
 <address>
- <p>Copyright © 2013 &ndash; 2021 Richard Callwood III. Some rights reserved.
- <p>This library is free software; you can redistribute it and/or modify it under the terms of the <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">GNU Lesser General Public License version 2.1</a> as published by the Free Software Foundation.
- <p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ <p>Copyright © 2013 &ndash; 2026 Richard Callwood III. Some rights reserved.
+ <p>This library is free software: you can redistribute it and/or modify it under the terms of the
+ <a href="https://www.gnu.org/licenses/lgpl-3.0.html" target="_blank">GNU Lesser General Public License</a>
+ as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ <p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 </address>
 
 <h3 id="Categories">Object Collection Categories</h3>
@@ -426,7 +471,7 @@ To facilitate visual consistency across different calls to this macro, vertical 
   <td>2015 May 31</td>
   <td>
    <ul>
-    <li>Colors are accepted for the <code>Emission</code> argument.
+    <li>Bug fix: Colors are accepted for the <code>Emission</code> argument.
    </ul>
   </td>
  </tr><tr>
@@ -437,7 +482,8 @@ To facilitate visual consistency across different calls to this macro, vertical 
     <li>Top padding may differ from bottom padding.
     <li>Padding may be applied around the font metrics rather than the text or object itself.
     <li>A texture may be obtained without being attached to an object.
-    <li>The emission formal parameters are prefixed with <code>c_</code> to emphasize their type. The functionality is unchanged.
+    <li>The emission formal parameters are prefixed with <code>c_</code> to emphasize their type.
+     The functionality is unchanged.
    </ul>
   </td>
  </tr><tr>
@@ -454,8 +500,24 @@ To facilitate visual consistency across different calls to this macro, vertical 
     <li>The User Manual and license texts are updated for repositories other than lib.povray.org.
    </ul>
   </td>
+ </tr><tr>
+  <td>1.1.2-rc.1</td> <td>2026 April 6</td>
+  <td>
+   <ul>
+    <li>The POV-Ray <code>#version</code> is preserved between 3.5 and 3.8.
+    <li>The license is upgraded to version 3 of the LGPL.
+   </ul>
+  </td>
  </tr>
 </table>
+
+<h3 id="Links">Links</h3>
+
+<ul>
+ <li><a href="https://lib.povray.org/searchcollection/index2.php?objectName=Caption&amp;contributorTag=Cousin%20Ricky">Official Caption repository</a>
+  and <a href="https://github.com/CousinRicky/POV-Caption">GitHub mirror</a>
+ <li><a href="https://news.povray.org/povray.object-collection/">Object Collection discussion</a>
+</ul>
 
 <p><a href="#toc">Table of contents</a>
 

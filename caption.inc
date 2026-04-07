@@ -1,29 +1,29 @@
-/* caption.inc version 1.1.1A
+/* caption.inc version 1.1.2-rc.1 2026-Apr-06
  * Persistence of Vision Raytracer include file
  * POV-Ray Object Collection
  *
  * Imprints text or other form onto a box.
  *
- * Copyright (C) 2013 - 2021 Richard Callwood III.  Some rights reserved.
- * This file is licensed under the terms of the CC-LGPL
- * a.k.a. the GNU Lesser General Public License version 2.1.
+ * Copyright (C) 2013 - 2026 Richard Callwood III.  Some rights reserved.
+ * This file is licensed under the terms of the GNU-LGPL.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License version 2.1 as published by the Free Software Foundation.
+ * This library is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  Please
- * visit https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html for
- * the text of the GNU Lesser General Public License version 2.1.
+ * visit https://www.gnu.org/licenses/lgpl-3.0.html for the text
+ * of the GNU Lesser General Public License version 3.
  *
  * Vers   Date         Comments
  * ----   ----         --------
  *        2013-Mar-13  Created, based on code I wrote between 2004 and 2006.
  *        2013-Dec-23  A macro is added for general objects, not just text.
- * 1.0    2013-Dec-23  The module is adapted for the Object Collection.
- * 1.0.1  2015-May-31  Colors are accepted for the Emission argument.
+ * 1.0    2013-Dec-23  The library is adapted for the Object Collection.
+ * 1.0.1  2015-May-31  Bug fix: Colors are accepted for the Emission argument.
  *        2016-Apr-09  Code for padding and texture is separated into their own
  *                     macros, in preparation for future changes.
  *        2016-Apr-11  Top padding may differ from bottom padding.
@@ -32,20 +32,21 @@
  *                     metrics rather than the text or object itself.
  * 1.1    2016-Apr-30  Uploaded.
  * 1.1.1  2019-Mar-30  View_POV_Include_Stack is utilized.
- * 1.1.1A 2021-Oct-09  The license text is updated.
+ *        2024-Dec-28  The #version is preserved between 3.5 and 3.8.
+ * 1.1.2  2026-Apr-06  The license is upgraded to LGPL 3.
  *
  * Implementation note: due to POV-Ray namespace scope leakage, local variables
  * and function parameters (other than x, y, and z) *must* be prefixed.
  */
 #ifndef (Caption_Inc_Temp) #declare Caption_Inc_Temp = version;
-#declare CAPTION_VERSION = 1.11;
 
 //Determine whether to use emission or ambient:
-#if (version < 3.7) #version 3.5; #else #version 3.7; #end
+#version max (3.5, min (3.8, version)); // Bracket the POV version.
 
+#declare CAPTION_VERSION = 1.12;
 #ifdef (View_POV_Include_Stack)
-  #debug "#include \"caption.inc\" //version 1.1.1A\n"
-  #debug concat ("  #version ", str(version,0,1), ";\n")
+  #debug "#include \"caption.inc\" //version 1.1.2-rc.1\n"
+  #debug concat ("  #version ", str(version,0,2), ";\n")
 #end
 
 #include "math.inc"
